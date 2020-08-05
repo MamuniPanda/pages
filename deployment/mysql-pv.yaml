@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-volume-pradeep
+  namespace: pradeep
+  labels:
+    type: local
+spec:
+  storageClassName: mysql-pradeep
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/data-pradeep"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-volume-claim-pradeep
+  namespace: pradeep
+spec:
+  storageClassName: mysql-pradeep
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
